@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'feature/**'
+      - feature_pipeline
 
 jobs:
   terraform:
@@ -18,10 +18,13 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
+        working-directory: ./terraform Code
         run: terraform init
 
       - name: Terraform Validate
+        working-directory: ./terraform Code
         run: terraform validate
 
       - name: Terraform Plan
+        working-directory: ./terraform Code
         run: terraform plan
